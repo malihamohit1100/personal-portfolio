@@ -572,3 +572,241 @@ img {
     padding: 20px;
   }
 }
+
+/* Active navigation link */
+
+.nav-link-active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.nav-link-active::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+
+  width: 100%;
+  height: 2px;
+
+  background-color: var(--color-primary);
+
+  border-radius: 2px;
+}
+
+.nav-link-custom {
+  position: relative;
+}
+
+
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+
+  font-size: 1.2rem;
+}
+
+.contact-form {
+  padding: 30px;
+
+  background-color: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  box-shadow: var(--shadow-soft);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 13px 15px;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 0.88rem;
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-secondary);
+
+  box-shadow: 0 0 0 3px
+    rgba(153, 126, 103, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-top: 20px;
+  padding: 13px 15px;
+
+  border-radius: 7px;
+
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.form-error {
+  background-color: #FCE8E6;
+  color: #A12B20;
+}
+
+.form-success {
+  background-color: #E5F2E7;
+  color: #246B38;
+}
+
+:root[data-theme='dark'] .form-error {
+  background-color: #442421;
+  color: #FFB4AA;
+}
+
+:root[data-theme='dark'] .form-success {
+  background-color: #203B29;
+  color: #A9DDB4;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-custom {
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+
+  color: var(--color-secondary);
+  background-color: var(--color-surface);
+
+  font-size: 1.1rem;
+
+  transition: var(--transition);
+}
+
+.footer-social-link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   SCROLL TO TOP
+========================================= */
+
+.scroll-top-button {
+  position: fixed;
+
+  right: 30px;
+  bottom: 30px;
+
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+
+  font-size: 1.2rem;
+
+  box-shadow: var(--shadow-soft);
+
+  transition: var(--transition);
+}
+
+.scroll-top-button:hover {
+  transform: translateY(-4px);
+  opacity: 0.9;
+}
+
+/* =========================================
+   STAGE 4 RESPONSIVE STYLES
+========================================= */
+
+@media (max-width: 640px) {
+  .contact-form {
+    padding: 20px;
+  }
+
+  .scroll-top-button {
+    right: 18px;
+    bottom: 18px;
+
+    width: 44px;
+    height: 44px;
+  }
+}

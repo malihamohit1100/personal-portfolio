@@ -51,14 +51,14 @@ const Projects = () => {
           </p>
 
         </div>
-
+        <br />
         {/* Filters */}
         <div className="mb-10">
 
           <p className="mb-4 text-sm font-semibold">
             Filter by technology
           </p>
-
+          <br />
           <div className="flex flex-wrap gap-3">
 
             {filters.map((filter) => (
@@ -80,14 +80,13 @@ const Projects = () => {
           </div>
 
         </div>
-
+        <br />
         {/* Project count */}
         <div className="mb-6 flex items-center justify-between">
 
           <p className="text-sm text-[var(--color-text-muted)]">
             Showing {filteredProjects.length} of {projects.length} projects
           </p>
-
           {activeFilter !== 'All' && (
             <button
               type="button"
@@ -99,7 +98,7 @@ const Projects = () => {
           )}
 
         </div>
-
+        <br />
         {/* Project cards */}
         {filteredProjects.length > 0 ? (
           <div className="grid gap-7 md:grid-cols-2">

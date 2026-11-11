@@ -1,17 +1,21 @@
 
 import { useState } from 'react';
+
 import ThemeToggle from '../ui/ThemeToggle';
+import useActiveSection from '../../hooks/useActiveSection';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '#home', id: 'home' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const activeSection = useActiveSection();
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -36,9 +40,17 @@ const Navbar = ({ theme, toggleTheme }) => {
         <div className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.id}
               href={link.href}
-              className="nav-link-custom"
+              aria-current={
+                activeSection === link.id ? 'location' : undefined
+              }
+              onClick={closeMenu}
+              className={`nav-link-custom ${
+                activeSection === link.id
+                  ? 'nav-link-active'
+                  : ''
+              }`}
             >
               {link.label}
             </a>
@@ -56,13 +68,19 @@ const Navbar = ({ theme, toggleTheme }) => {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={
+              menuOpen
+                ? 'Close navigation menu'
+                : 'Open navigation menu'
+            }
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text)] md:hidden"
           >
             <i
-              className={`bi ${menuOpen ? 'bi-x-lg' : 'bi-list'} text-xl`}
+              className={`bi ${
+                menuOpen ? 'bi-x-lg' : 'bi-list'
+              } text-xl`}
               aria-hidden="true"
             ></i>
           </button>
@@ -78,10 +96,17 @@ const Navbar = ({ theme, toggleTheme }) => {
           <div className="container-custom flex flex-col gap-5">
             {navLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.id}
                 href={link.href}
+                aria-current={
+                  activeSection === link.id ? 'location' : undefined
+                }
                 onClick={closeMenu}
-                className="nav-link-custom"
+                className={`nav-link-custom ${
+                  activeSection === link.id
+                    ? 'nav-link-active'
+                    : ''
+                }`}
               >
                 {link.label}
               </a>

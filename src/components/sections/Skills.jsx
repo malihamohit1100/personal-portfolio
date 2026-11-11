@@ -28,7 +28,7 @@ const Skills = () => {
           </p>
 
         </div>
-
+        <br />
         {/* Skills grid */}
         <div className="grid gap-6 sm:grid-cols-2">
 

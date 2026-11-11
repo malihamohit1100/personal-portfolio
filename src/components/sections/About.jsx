@@ -49,7 +49,7 @@ const About = () => {
               A curious developer with a passion for learning
               and building useful things.
             </h3>
-
+            <br />
             <div className="mt-6 space-y-5 text-base leading-8 text-[var(--color-text-muted)]">
 
               <p>

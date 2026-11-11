@@ -23,7 +23,7 @@ const Hero = () => {
           <h2 className="mt-6 text-xl font-semibold text-[var(--color-secondary)] sm:text-2xl">
             Aspiring Software Engineer
           </h2>
-
+          <br />
           <p className="mt-6 max-w-lg text-base leading-8 text-[var(--color-text-muted)]">
             I'm a Computer Science and Engineering graduate
             interested in building practical web applications
@@ -31,7 +31,7 @@ const Hero = () => {
             I enjoy learning new technologies, solving problems,
             and turning ideas into functional applications.
           </p>
-
+          <br />
           {/* Buttons */}
           <div className="mt-10 flex flex-wrap gap-4 sm:mt-12">
 
@@ -53,6 +53,8 @@ const Hero = () => {
             </a>
 
           </div>
+
+          <br />
 
           {/* Social links */}
           <div className="mt-7 flex items-center gap-5 sm:mt-8">

@@ -37,9 +37,9 @@ const ProjectCard = ({ project }) => {
         <p className="mt-4 flex-1 text-sm leading-7 text-[var(--color-text-muted)]">
           {project.description}
         </p>
-
+        <br />
         {/* Technologies */}
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2 pb-6">
 
           {project.technologies.map((technology) => (
             <span
@@ -52,9 +52,10 @@ const ProjectCard = ({ project }) => {
 
         </div>
 
+        <br/>
+
         {/* Project links */}
         <div className="mt-7 flex flex-wrap gap-3 border-t border-[var(--color-border)] pt-5">
-
           {project.githubUrl ? (
             <a
               href={project.githubUrl}
