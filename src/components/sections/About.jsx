@@ -80,7 +80,7 @@ const About = () => {
           </div>
 
           {/* Profile information */}
-          <div>
+          <div className="flex flex-col gap-6">
             <div className="about-card">
 
               <h3 className="mb-5 text-lg font-bold">
@@ -105,7 +105,7 @@ const About = () => {
             </div>
 
             {/* Career direction */}
-            <div className="mt-6 rounded-lg border border-[var(--color-border)] p-6">
+            <div className="rounded-lg border border-[var(--color-border)] p-6">
 
               <div className="flex items-center gap-3">
                 <i className="bi bi-bullseye text-2xl text-[var(--color-primary)]"></i>

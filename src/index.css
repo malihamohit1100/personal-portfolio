@@ -119,7 +119,7 @@ img {
 }
 
 .section-padding {
-  padding-block: 100px;
+  padding-block: 110px;
 }
 
 .section-label {
@@ -230,7 +230,7 @@ img {
 ========================================= */
 
 .hero-section {
-  min-height: 690px;
+  min-height: 680px;
   display: flex;
   align-items: center;
 }
@@ -301,7 +301,7 @@ img {
   }
 
   .section-padding {
-    padding-block: 70px;
+    padding-block: 72px;
   }
 
   .hero-section {

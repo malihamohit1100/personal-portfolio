@@ -94,16 +94,6 @@ const Hero = () => {
               className="hero-image"
             />
 
-            <div className="absolute -bottom-7 -left-7 z-10 hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-lg sm:block">
-              <p className="text-sm font-semibold">
-                CSE Graduate
-              </p>
-
-              <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-                Class of 2024
-              </p>
-            </div>
-
           </div>
         </div>
 
