@@ -1,2 +1,325 @@
 
 @import "tailwindcss";
+
+/* =========================================
+   1. LIGHT THEME
+========================================= */
+
+:root {
+  font-family: 'Inter', sans-serif;
+
+  color-scheme: light;
+
+  --color-primary: #664930;
+  --color-secondary: #997E67;
+  --color-accent: #CCBEB1;
+  --color-highlight: #FFDBBB;
+
+  --color-bg: #FFF9F3;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F7EEE5;
+
+  --color-text: #34271E;
+  --color-text-muted: #79695B;
+
+  --color-border: #E8DCCE;
+
+  --color-navbar: rgba(255, 249, 243, 0.88);
+
+  --shadow-soft: 0 12px 35px rgba(102, 73, 48, 0.08);
+
+  --transition: 250ms ease;
+}
+
+/* =========================================
+   2. DARK THEME
+========================================= */
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-primary: #D6B99B;
+  --color-secondary: #B89B7D;
+  --color-accent: #665344;
+  --color-highlight: #8F7156;
+
+  --color-bg: #171411;
+  --color-surface: #211C17;
+  --color-surface-alt: #2B241D;
+
+  --color-text: #F3E8DC;
+  --color-text-muted: #B8A99A;
+
+  --color-border: #42372D;
+
+  --color-navbar: rgba(23, 20, 17, 0.88);
+
+  --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   3. GLOBAL RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  font-family: 'Inter', sans-serif;
+
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background-color: var(--color-highlight);
+  color: #34271E;
+}
+
+/* =========================================
+   4. REUSABLE LAYOUT
+========================================= */
+
+.container-custom {
+  width: min(1120px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.section-padding {
+  padding-block: 100px;
+}
+
+.section-label {
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 750;
+  letter-spacing: -0.055em;
+  line-height: 1.15;
+}
+
+.text-muted-custom {
+  color: var(--color-text-muted);
+}
+
+/* =========================================
+   5. BUTTONS
+========================================= */
+
+.btn-primary-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 23px;
+
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+
+  border: 1px solid var(--color-primary);
+  border-radius: 7px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition: var(--transition);
+}
+
+.btn-primary-custom:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-outline-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 23px;
+
+  background-color: transparent;
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition: var(--transition);
+}
+
+.btn-outline-custom:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   6. NAVBAR
+========================================= */
+
+.navbar-custom {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background-color: var(--color-navbar);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-link-custom {
+  position: relative;
+  color: var(--color-text-muted);
+
+  font-size: 0.88rem;
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.nav-link-custom:hover {
+  color: var(--color-primary);
+}
+
+/* =========================================
+   7. HERO
+========================================= */
+
+.hero-section {
+  min-height: 690px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  margin-inline: auto;
+}
+
+.hero-image-wrapper::before {
+  content: '';
+
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+
+  border: 1px solid var(--color-secondary);
+  border-radius: 180px 180px 14px 14px;
+
+  opacity: 0.65;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 470px;
+
+  object-fit: cover;
+  object-position: center 25%;
+
+  border-radius: 180px 180px 14px 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================================
+   8. ABOUT
+========================================= */
+
+.about-card {
+  padding: 25px;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+
+  box-shadow: var(--shadow-soft);
+}
+
+.about-info-item {
+  padding-block: 13px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-info-item:last-child {
+  border-bottom: none;
+}
+
+/* =========================================
+   9. RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .container-custom {
+    width: min(100% - 36px, 600px);
+  }
+
+  .section-padding {
+    padding-block: 70px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-block: 70px;
+  }
+
+  .hero-image {
+    height: 390px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
