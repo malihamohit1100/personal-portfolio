@@ -151,7 +151,7 @@ img {
   justify-content: center;
   gap: 10px;
 
-  padding: 14px 23px;
+  padding: 15px 25px;
 
   background-color: var(--color-primary);
   color: #FFFFFF;
@@ -176,7 +176,7 @@ img {
   justify-content: center;
   gap: 10px;
 
-  padding: 14px 23px;
+  padding: 15px 25px;
 
   background-color: transparent;
   color: var(--color-text);
@@ -225,6 +225,7 @@ img {
   color: var(--color-primary);
 }
 
+
 /* =========================================
    7. HERO
 ========================================= */
@@ -237,26 +238,27 @@ img {
 
 .hero-image-wrapper {
   position: relative;
+
   width: 100%;
   max-width: 410px;
+
   margin-inline: auto;
-}
 
-.hero-image-wrapper::before {
-  content: '';
-
-  position: absolute;
-  inset: 18px -18px -18px 18px;
+  overflow: hidden;
 
   border: 1px solid var(--color-secondary);
+
   border-radius: 180px 180px 14px 14px;
 
-  opacity: 0.65;
+  background-color: var(--color-surface);
+
+  box-shadow: var(--shadow-soft);
 }
 
 .hero-image {
+  display: block;
+
   position: relative;
-  z-index: 1;
 
   width: 100%;
   height: 470px;
@@ -264,9 +266,9 @@ img {
   object-fit: cover;
   object-position: center 25%;
 
-  border-radius: 180px 180px 14px 14px;
-  box-shadow: var(--shadow-soft);
+  border-radius: inherit;
 }
+
 
 /* =========================================
    8. ABOUT
@@ -321,5 +323,252 @@ img {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+/* =========================================
+   SKILLS SECTION
+========================================= */
+
+.skill-card {
+  padding: 28px;
+
+  background-color: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-secondary);
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 8px 13px;
+
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.skill-badge:hover {
+  background-color: var(--color-highlight);
+  color: #34271E;
+  border-color: var(--color-highlight);
+}
+
+
+
+/* =========================================
+   PROJECT SECTION
+========================================= */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background-color: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-secondary);
+  box-shadow: 0 18px 40px rgba(102, 73, 48, 0.13);
+}
+
+.project-visual {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 190px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 219, 187, 0.3),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-surface-alt),
+      var(--color-accent)
+    );
+}
+
+.project-visual-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--color-primary);
+}
+
+.project-visual-inner i {
+  font-size: 3.5rem;
+  transition: transform var(--transition);
+}
+
+.project-card:hover .project-visual-inner i {
+  transform: scale(1.12);
+}
+
+.project-visual-inner span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.project-featured {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  padding: 6px 11px;
+
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+
+  border-radius: 5px;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--color-text);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  transition: color var(--transition);
+}
+
+.project-link:hover {
+  color: var(--color-primary);
+}
+
+/* =========================================
+   PROJECT FILTERS
+========================================= */
+
+.filter-button {
+  padding: 9px 16px;
+
+  background-color: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+
+  color: var(--color-text-muted);
+
+  font-size: 0.82rem;
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.filter-button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-button-active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.filter-button-active:hover {
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+/* =========================================
+   RESPONSIVE PROJECT CARDS
+========================================= */
+
+@media (max-width: 640px) {
+  .skill-card {
+    padding: 22px;
+  }
+
+  .project-visual {
+    min-height: 165px;
+  }
+
+  .project-card > div:last-child {
+    padding: 20px;
+  }
+}
+
+/* Consistent internal spacing for project cards */
+
+.project-card-content {
+  padding: 26px;
+}
+
+@media (max-width: 640px) {
+  .project-card-content {
+    padding: 20px;
+  }
+}
+
+/* Career Goal card */
+
+.career-goal-card {
+  padding: 26px;
+
+  background-color: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 640px) {
+  .career-goal-card {
+    padding: 20px;
   }
 }

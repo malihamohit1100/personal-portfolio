@@ -33,7 +33,7 @@ const Hero = () => {
           </p>
 
           {/* Buttons */}
-          <div className="mt-9 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4 sm:mt-12">
 
             <a
               href="/Maliha-Mohit-CV.pdf"
@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
 
           {/* Social links */}
-          <div className="mt-10 flex items-center gap-5">
+          <div className="mt-7 flex items-center gap-5 sm:mt-8">
 
             <span className="text-sm text-[var(--color-text-muted)]">
               Find me on

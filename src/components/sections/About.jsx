@@ -105,7 +105,7 @@ const About = () => {
             </div>
 
             {/* Career direction */}
-            <div className="rounded-lg border border-[var(--color-border)] p-6">
+            <div className="career-goal-card">
 
               <div className="flex items-center gap-3">
                 <i className="bi bi-bullseye text-2xl text-[var(--color-primary)]"></i>
