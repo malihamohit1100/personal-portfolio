@@ -37,8 +37,8 @@ const Hero = () => {
 
             <a
               href="/Maliha-Mohit-CV.pdf"
-              download
-              className="btn-primary-custom"
+              download="Maliha-Mohit-CV.pdf"
+              className="btn-primary-custom inline-flex items-center gap-2"
             >
               <i className="bi bi-download" aria-hidden="true"></i>
               Download CV
@@ -46,7 +46,7 @@ const Hero = () => {
 
             <a
               href="#projects"
-              className="btn-outline-custom"
+              className="btn-outline-custom inline-flex items-center gap-2"
             >
               View Projects
               <i className="bi bi-arrow-up-right" aria-hidden="true"></i>

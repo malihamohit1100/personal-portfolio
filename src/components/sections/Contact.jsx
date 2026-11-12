@@ -15,6 +15,9 @@ const Contact = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle input changes.
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -27,11 +30,13 @@ const Contact = () => {
     setErrorMessage('');
   };
 
-  const handleSubmit = (event) => {
+  // Handle form submission.
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const { name, email, subject, message } = formData;
 
+    // Required field validation.
     if (
       !name.trim() ||
       !email.trim() ||
@@ -39,23 +44,76 @@ const Contact = () => {
       !message.trim()
     ) {
       setErrorMessage('Please fill in all required fields.');
+      setSuccessMessage('');
       return;
     }
 
+    // Email validation.
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(email.trim())) {
       setErrorMessage('Please enter a valid email address.');
+      setSuccessMessage('');
       return;
     }
 
-    setSuccessMessage(
-      'Thank you for reaching out! Your form has been validated successfully.'
-    );
+    // Get Formspree endpoint.
+    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
 
+    if (!endpoint) {
+      setErrorMessage(
+        'Contact form is not configured yet. Please try again later.'
+      );
+      setSuccessMessage('');
+      return;
+    }
+
+    setIsSubmitting(true);
     setErrorMessage('');
+    setSuccessMessage('');
 
-    setFormData(initialFormData);
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          subject: subject.trim(),
+          message: message.trim(),
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.errors?.[0]?.message ||
+          'Unable to send your message. Please try again.'
+        );
+      }
+
+      // Successful submission.
+      setSuccessMessage(
+        'Thank you! Your message has been sent successfully.'
+      );
+
+      setFormData(initialFormData);
+
+    } catch (error) {
+      setErrorMessage(
+        error.message ||
+        'Something went wrong. Please try again.'
+      );
+
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -100,10 +158,11 @@ const Contact = () => {
               technology community.
             </p>
             <br />
-
             <div className="mt-9 flex flex-col gap-8">
 
+              {/* Email */}
               <div className="flex items-start gap-4">
+
                 <div className="contact-icon">
                   <i className="bi bi-envelope"></i>
                 </div>
@@ -120,9 +179,12 @@ const Contact = () => {
                     malihamohit12@gmail.com
                   </a>
                 </div>
+
               </div>
 
+              {/* Location */}
               <div className="flex items-start gap-4">
+
                 <div className="contact-icon">
                   <i className="bi bi-geo-alt"></i>
                 </div>
@@ -136,9 +198,12 @@ const Contact = () => {
                     Dhaka, Bangladesh
                   </p>
                 </div>
+
               </div>
 
+              {/* LinkedIn */}
               <div className="flex items-start gap-4">
+
                 <div className="contact-icon">
                   <i className="bi bi-linkedin"></i>
                 </div>
@@ -151,12 +216,13 @@ const Contact = () => {
                   <a
                     href="https://www.linkedin.com/in/maliha-mohit-4375842b6/"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="mt-1 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)]"
                   >
                     Connect with me
                   </a>
                 </div>
+
               </div>
 
             </div>
@@ -174,6 +240,7 @@ const Contact = () => {
 
               {/* Name */}
               <div className="form-group">
+
                 <label htmlFor="name">
                   Your Name
                 </label>
@@ -188,10 +255,12 @@ const Contact = () => {
                   required
                   autoComplete="name"
                 />
+
               </div>
 
               {/* Email */}
               <div className="form-group">
+
                 <label htmlFor="email">
                   Email Address
                 </label>
@@ -206,12 +275,14 @@ const Contact = () => {
                   required
                   autoComplete="email"
                 />
+
               </div>
 
             </div>
-
+            <br />
             {/* Subject */}
             <div className="form-group mt-5">
+
               <label htmlFor="subject">
                 Subject
               </label>
@@ -225,10 +296,12 @@ const Contact = () => {
                 placeholder="What is this about?"
                 required
               />
-            </div>
 
+            </div>
+            <br />
             {/* Message */}
             <div className="form-group mt-5">
+
               <label htmlFor="message">
                 Message
               </label>
@@ -239,16 +312,17 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Write your message..."
-                rows="5"
+                rows={5}
                 required
-              ></textarea>
+              />
+
             </div>
 
             {/* Error message */}
             {errorMessage && (
               <p
                 role="alert"
-                className="form-feedback form-error"
+                className="form-feedback form-error mt-5"
               >
                 <i className="bi bi-exclamation-circle"></i>
                 {errorMessage}
@@ -259,21 +333,29 @@ const Contact = () => {
             {successMessage && (
               <p
                 role="status"
-                className="form-feedback form-success"
+                className="form-feedback form-success mt-5"
               >
                 <i className="bi bi-check-circle"></i>
                 {successMessage}
               </p>
             )}
             <br />
-            {/* Submit */}
+            {/* Submit button */}
             <button
               type="submit"
-              className="btn-primary-custom mt-7 w-full sm:w-auto"
+              disabled={isSubmitting}
+              className="btn-primary-custom mt-7 w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
 
-              <i className="bi bi-send"></i>
+              <i
+                className={`bi ${
+                  isSubmitting
+                    ? 'bi-hourglass-split'
+                    : 'bi-send'
+                }`}
+              ></i>
+
             </button>
 
           </form>
