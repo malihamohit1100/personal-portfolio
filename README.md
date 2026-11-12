@@ -5,7 +5,7 @@ A responsive personal portfolio website built with React.js, Tailwind CSS, and B
 
 ## Live Website
 
-[View Portfolio](YOUR_DEPLOYED_WEBSITE_URL)
+[View Portfolio](https://personal-portfolio-ten-taupe-87.vercel.app/)
 
 ## Preview
 
